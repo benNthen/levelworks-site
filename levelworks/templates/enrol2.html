@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    <form action="enrol" method="post">
+        {% csrf_token %}
+
+        <h3>Child</h3>
+
+        <label for="c_fname">FIRST NAME</label>
+            <input type="text" name="c_fname" pattern="^[A-Za-z -]+$" placeholder="FIRST"><br>
+        
+        <label for="c_lname">LAST NAME</label>
+            <input type="text" name="c_lname" pattern="^[A-Za-z -]+$" placeholder="LAST"><br>
+        
+        <label for="age">AGE:</label>
+            <select id="age" name="age" placeholder="Select">
+                <option value="" disabled selected hidden>Select</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+        
+        <label for="school">SCHOOL</label>
+            <input type="text" name="school" pattern="^[A-Za-z -]+$" placeholder="SCHOOL"><br>
+
+        <h3>Parent</h3>
+
+        <label for="p_fname">FIRST NAME</label>
+            <input type="text" name="p_fname" pattern="^[A-Za-z -]+$" placeholder="FIRST NAME"><br>
+        <label for="p_lname">LAST NAME</label>
+            <input type="text" name="p_lname" pattern="^[A-Za-z -]+$" placeholder="LAST NAME"><br>
+        <label for="email">EMAIL</label>
+            <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="EMAIL"><br>
+        <label for="phone">PHONE</label>
+            <input type="text" name="phone"  maxlength="12" placeholder="PHONE"><br>
+        <label for ="heard_from">HOW DID YOU HEAR ABOUT US?</label><br>
+        <select id ="heard_from" name ="heard_from" placeholder="Select">
+            <option value="" disabled selected hidden>Select</option>
+            <option value="word of mouth">Word of Mouth</option>
+            <option value="advertisement">Advertisement</option>
+            <option value="Social Media">Social Media</option>
+            <option value="expo">Expo</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for ="term">Select Term</label><br>
+            <input type="radio" id="term01" name="term" value="1">TERM 01</br>
+  		    <input type="radio" id="term02" name="term" value="2">TERM 02</br>
+  		    <input type="radio" id="term03" name="term" value="3">TERM 03</br>
+  		    <input type="radio" id="term04" name="term" value="4">TERM 04</br>
+
+        <input name="form" type="submit">
+
+    </form>
+
+    <div>
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #04AA6D;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+fieldset {
+      overflow: hidden
+    }
+    
+    .some-class {
+      float: left;
+      clear: none;
+    }
+    
+    label {
+      float: left;
+      clear: none;
+      display: block;
+      padding: 0px 1em 0px 8px;
+    }
+    
+    input[type=radio],
+    input.radio {
+      float: left;
+      clear: none;
+      margin: 2px 0 0 2px;
+    }
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #04AA6D;
+}
+</style>
+<body>
+
+<form id="regForm" action="enrol" method="post">
+    {% csrf_token %}
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+  
+  <!--<h1>Register:</h1> -->
+  <!-- One "tab" for each step in the form: -->
+  
+   <div class="tab">
+  		<h2>Child</h2>
+        
+        First Name:
+    	  <p><input placeholder="First name..." oninput="this.className = ''" name="c_fname"></p>
+    	  Last Name:
+    	  <p><input placeholder="Last name..." oninput="this.className = ''" name="c_lname"></p>
+    	  Age:
+    	  <p><select id="age" name="age" placeholder="Select">
+                <option value="" disabled selected hidden>Select</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+        </select></p>
+        
+        School:
+		  <p><input placeholder="School..." oninput="this.className = ''" name="school"></p>
+        
+    	<h2>Parent</h2>
+        
+        First Name:
+    	  <p><input placeholder="First name..." oninput="this.className = ''" name="p_fname"></p>
+    	  Last Name:
+    	  <p><input placeholder="Last name..." oninput="this.className = ''" name="p_lname"></p>
+    	  Email:
+    	  <p><input placeholder="E-mail..." oninput="this.className = ''" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email"></p>
+    	  Phone:
+    	  <p><input placeholder="Phone..." oninput="this.className = ''" name="phone" maxlength="12"></p>
+    
+        <label for ="heard_from">HOW DID YOU HEAR ABOUT US?</label><br>
+        	<select id ="heard_from" name ="heard_from" placeholder="Select">
+            	<option value="" disabled selected hidden>Select</option>
+            	<option value="word of mouth">Word of Mouth</option>
+            	<option value="advertisement">Advertisement</option>
+            	<option value="Social Media">Social Media</option>
+            	<option value="expo">Expo</option>
+            	<option value="other">Other</option>
+        	</select>
+  </div>
+  
+  <div class="tab">
+	<h2>SELECT DATES</h2>
+  		<input type="radio" id="term01" name="term" value="1">TERM 01</br>
+  		<input type="radio" id="term02" name="term" value="2">TERM 02</br>
+  		<input type="radio" id="term03" name="term" value="3">TERM 03</br>
+  		<input type="radio" id="term04" name="term" value="4">TERM 04</br>
+        
+  	<h2>TOTAL</h2>  <h2>$390</h2>
+  
+  </div>
+  
+  <div class="tab">
+  	<h2>PAYMENT</h2>
+  
+  	<h3>LUMP SUM: $390</h3>
+  
+  	NAME ON CARD
+  	<p><input placeholder="CARD HOLDER..." oninput="this.className = ''" name="cardname"></p>
+  	CARD NUMBER
+    <p><input placeholder="CARD NUMBER..." oninput="this.className = ''" name="cardnum" maxlength="16"></p>
+    
+	<fieldset>
+    	<div class="some-class">
+    	<input type="radio" id="credit" name="payserv" value="credit"/>
+            	<label for="credit">Credit</label>
+  			<input type="radio" id="paypal" name="payserv" value="paypal"/>
+            	<label for="paypal">Paypal</label>
+    	</div>
+    </fieldset><br>
+    
+    <fieldset>
+    	EXPIRY DATE
+        <select id ="exp-month" name ="exp-mont">
+   		    <option value="" disabled selected hidden>Month</option>
+        	<option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          </select>
+       <select id ="exp-year" name ="exp-year" >
+          <option value="" disabled selected hidden>Year</option>
+        	<option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+      </select>
+   </fieldset><br>
+
+    <label for="cvc">CVC</label><br>
+    <p><input placeholder="CVC" oninput="this.className = ''" name="cvc" maxlength="3" ></p>
+      
+  </div>
+  
+  <div class="tab">
+  	<h2>YOUR CONFIRMATION HAS BEEN SENT TO YOUR EMAIL<h2>
+  </div>
+  
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+</form>
+
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+</script>
+
+</body>
+</html>
