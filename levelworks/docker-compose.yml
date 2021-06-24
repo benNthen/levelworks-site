@@ -1,0 +1,38 @@
+version: "3.9"
+
+#Services are basically different types of containers
+services:
+  db:
+    image: postgres
+    container_name: postgresdb
+    environment:
+      - POSTGRES_DB=levelworks
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - pgdb-data:/var/lib/postgresql/data 
+
+  levelupworks:
+    build: .
+    environment:
+      - DB_NAME=levelworks
+      - DB_USER=postgres
+      - DB_PASS=password
+      - DB_HOST=db
+    command: > 
+      bash -c "python manage.py makemigrations
+      && python manage.py migrate
+      && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    image: levelupworks-image
+    container_name: levelupworks-app
+    ports:
+      - "10555:8000"
+    depends_on:
+      - db
+
+volumes:
+  pgdb-data:
+    driver: local
