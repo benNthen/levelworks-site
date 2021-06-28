@@ -1,1 +1,134 @@
-<h1>Hello World!!!!</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link href="{% static 'css/polish.css' %}" rel="stylesheet">
+</head>
+<body>
+  <div class="topnav">
+    <a style="font:Mulish; font-size:8px;"href="#">ABOUT</a>
+    <a style="font:Mulish; font-size:8px;"href="#">PROGRAMME</a>
+    <a style="font:Mulish; font-size:8px;"href="#">STUDENT PROJECTS</a>
+      <a style="font:Mulish; font-size:15px; margin-left: 140px; margin-right: 140px; font-weight:bold" href="#">LOGO</a> 
+  <a><button class="button button-enrol">ENROL</button></a>
+  <a style="margin-left: 6px"><button class="button button-portal">PORTAL</button></a>
+  <a style="font:Mulish; font-size:8px; font-weight:bold;
+  margin: 10px 10px 10px 10px ;
+  " href="#">中文</a>
+  </div>
+
+<div class="div-sec">
+  <div class="div-form">
+  <h2>CHILD</h2>
+  <div class="div-details">
+  <form>
+    {% csrf_token %}
+    <div class="box">
+      <div>
+        <label style="font:Lato; font-weight:bold" for="fname">FIRST NAME</label><br>
+          <input type="text" id="fname" name="fname">
+      </div>  
+    
+      <div>
+        <label style="font:Lato; font-weight:bold" for="lname">LAST NAME</label><br>
+          <input type="text" id="lname" name="lname"><br><br>
+      </div>
+    </div>
+    <label style="font:Lato; font-weight:bold" for="age">AGE</label>
+      <p><select id="age" name="age" placeholder="Select">
+         <option value="" disabled selected hidden>Select</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+      </select></p>
+    
+<label style="font:Lato; font-weight:bold" for="age">SCHOOL</label><br>
+<input type="text" id="school" name="school">
+  </div>
+  
+
+<h2>PARENT</h2>
+<div class="div-details">
+  <div class="box">
+    <div>
+      <label style="font:Lato; font-weight:bold" for="fname">FIRST NAME</label>
+        <input type="text" id="fname" name="fname">
+      </div> 
+        
+      <div>
+        <label style="font:Lato; font-weight:bold" for="lname">LAST NAME</label>
+        <input type="text" id="lname" name="lname"><br><br>
+  </div>
+</div>
+  
+<label style="font:Lato; font-weight:bold" for="email">EMAIL</label><br>
+<input type="text" id="email" name="email"><br><br>
+
+<label style="font:Lato; font-weight:bold" for="phone">PHONE</label><br>
+<input type="text" id="phone" name="phone"><br><br>
+
+<label style="font:Lato; font-weight:bold" for ="heard_from">HOW DID YOU HEAR ABOUT US?</label><br><br>
+<select id ="heard_from" name ="heard_from" placeholder="Select">
+ <option value="" disabled selected hidden>Select</option>
+ <option value="word of mouth">Word of Mouth</option>
+ <option value="advertisement">Advertisement</option>
+ <option value="Social Media">Social Media</option>
+ <option value="expo">Expo</option>
+ <option value="other">Other</option>
+ </select>
+
+</div>
+
+<button class="button button-submit">CONTINUE</button>
+</div>
+</div>
+
+<div class="footer">
+  <div class="box-foot">
+    <div>
+      <a style="font:Lato;font-size:8px;color:#FFFFFF">ABOUT</a>
+        <ul>
+          <li style="text-indent: 1.3em;" class="footer">Background</li>
+          <li style="text-indent: -0.2em;" class="footer">Teachers</li>
+          <li style="text-indent: 5em;" class="footer">Sponsors and Partners</li><br><br>
+          <li style="font-size: 7px; text-indent: 5em;" class="footer">© 2021 LevelUp Works</li>
+        </ul>
+    </div>
+    
+    <div>
+	    <a style="font:Lato;font-size:8px;color:#FFFFFF">PROGRAMME</a>
+      <ul>
+          <li style="text-indent: -3.2em;" class="footer">Content</li>
+          <li style="text-indent: -2.8em;" class="footer">Location</li>
+          <li style="text-indent: 1.5em;" class="footer">Dates and Schedule</li>
+          <li style="text-indent: -4.5em;" class="footer">Fees</li>
+        </ul>
+    </div>
+
+    <div>
+	    <a style="font:Lato;font-size:8px;color:#FFFFFF">STUDENT PROJECTS</a>
+      <ul>
+          <li style="text-indent: -3.3em;" class="footer">Student Games</li>
+          <li style="text-indent: -3.6em;" class="footer">Photo of Class</li>
+          <li style="text-indent: -6em;" class="footer">Reviews</li>
+        </ul>
+    </div>
+    
+    <div>
+    	<a style="font:Lato;font-size:8px;color:#FFFFFF">CONTACT US</a>
+          <ul>
+            <li style="text-indent: 5.6em; list-style: inside url({% static 'img/mailicon.jpg' %});" class="footer">alan@levelupworks.com</li>
+            <li style="text-indent: 0.6em; list-style: inside url({% static 'img/phoneicon.png' %});" class="footer">021 668 185</li>
+            <li style="text-indent: 2.2em; list-style: inside url({% static 'img/fbicon.png' %});" class="footer">LevelUp Works</li>
+         </ul>
+    </div>
+  </div>
+</div>
+</form>
+</body>
+</html>

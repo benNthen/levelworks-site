@@ -54,8 +54,6 @@ def enrol(request):
 
         student.save()
 
-        print("data transfer successful")
-
         # later on may need to check if child registered with parent already exists
         
         return redirect('/')

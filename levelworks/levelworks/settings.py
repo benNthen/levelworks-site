@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from decouple import Csv, config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,11 +77,14 @@ WSGI_APPLICATION = 'levelworks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASS'),
-        'HOST': os.environ.get('DB_HOST'),
+        'ENGINE': config('DB_ENGINE'),
+        #'NAME': BASE_DIR / 'db.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
+        'PASSWORD': config('DB_PASSWORD'),
     }
 }
 

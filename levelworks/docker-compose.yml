@@ -1,25 +1,24 @@
 version: "3.9"
 
-#Services are basically different types of containers
 services:
   db:
     image: postgres
     container_name: postgresdb
     environment:
-      - POSTGRES_DB=levelworks
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_HOST_AUTH_METHOD=trust
+      - APP_DB_USER=${APP_DB_NAME}
+      - APP_DB_PASS=docker
+      - APP_DB_NAME=docker
     volumes:
-      - pgdb-data:/var/lib/postgresql/data 
+  #- pgdb-data:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d/
 
   levelupworks:
+    restart: always
     build: .
-    environment:
-      - DB_NAME=levelworks
-      - DB_USER=postgres
-      - DB_PASS=password
-      - DB_HOST=db
     command: > 
       bash -c "python manage.py makemigrations
       && python manage.py migrate
@@ -29,9 +28,9 @@ services:
     image: levelupworks-image
     container_name: levelupworks-app
     ports:
-      - "10555:8000"
+    - "8000:8000"
     depends_on:
-      - db
+    - db
 
 volumes:
   pgdb-data:

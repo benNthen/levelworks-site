@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,13 +25,32 @@ h1 {
   text-align: center;  
 }
 
-input {
-  padding: 10px;
-  width: 100%;
-  font-size: 17px;
-  font-family: Raleway;
-  border: 1px solid #aaaaaa;
+h2 {  
+    color:black;  
+    background-color:#B2ADAD;  
+    padding:5px; 
+    font-family: Lato;
+  }
+
+label {
+    font:Lato; 
+    font-weight:bold
 }
+
+input[type=text] {
+    height: 30px;
+    width: 220px;
+    padding: 12px 20px;
+    margin: -4px 8px;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+  }
+  input[type=text]:focus {
+    border: 3px solid #555;
+  }
 
 /* Mark input boxes that gets an error on validation: */
 input.invalid {
@@ -43,15 +63,27 @@ input.invalid {
 }
 
 button {
-  background-color: #04AA6D;
-  color: #ffffff;
+  background-color: #373F41;
   border: none;
-  padding: 10px 20px;
+  color: #ffffff;
+  padding: 8px 28px;
   font-size: 17px;
-  font-family: Raleway;
+  font-family: Lato;
   cursor: pointer;
 }
 
+.button-enrol {
+    background-color: #373F41;
+    font-size: 8px;
+}
+
+.button-portal {
+    font-size: 8px;
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+    padding: 6px 28px;
+ }
 button:hover {
   opacity: 0.8;
 }
@@ -103,8 +135,85 @@ fieldset {
 .step.finish {
   background-color: #04AA6D;
 }
+
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: #FFFF;
+  }
+  
+  /* Style the top navigation bar */
+  .topnav {
+    overflow: hidden;
+    background-color: #FFFF;
+    padding: 70px 260px 30px 260px;
+  }
+  
+  /* Style the topnav links */
+  .topnav a {
+    float: left;
+    display: block;
+    color: #373F41;
+    text-align: center;
+    margin-left: 37px;
+    text-decoration: none;
+  }
+  
+  /* Change color on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+   /* Style the footer */
+ .footer {
+    background-color: #979393;
+    text-align: center;
+    padding: 10px;
+  }
+
+  ul  {
+    list-style: none;
+    font-size:8px;
+    margin-top: 2px;
+    margin-left: -40px;
+    font-family: Lato;
+    color: #FFFFFF;
+  }
+  
+  li.icon{
+    float:left;
+  }
+  
+  li.footer {
+    padding: 2.8px;
+  }
+  
+  .box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px 2em;
+    gap: 2%;
+  }
+  
+  .box-foot {
+    display: grid;
+    grid-template-columns: 0.3fr 0.2fr 0.2fr 0.3fr;
+    grid-gap: 15px 2em;
+  }
+  
 </style>
 <body>
+
+<div class="topnav">
+    <a style="font:Mulish; font-size:8px;"href="#">ABOUT</a>
+    <a style="font:Mulish; font-size:8px;"href="#">PROGRAMME</a>
+    <a style="font:Mulish; font-size:8px;"href="#">STUDENT PROJECTS</a>
+    <a style="font:Mulish; font-size:15px; margin-left: 140px; margin-right: 140px; font-weight:bold" href="#">LOGO</a> 
+    <a><button class="button button-enrol">ENROL</button></a>
+    <a style="margin-left: 6px"><button class="button button-portal">PORTAL</button></a>
+    <a style="font:Mulish; font-size:8px; font-weight:bold; margin: 10px 10px 10px 10px ;" href="#">中文</a>
+</div>
 
 <form id="regForm" action="enrol" method="post">
     {% csrf_token %}
@@ -119,15 +228,22 @@ fieldset {
   <!--<h1>Register:</h1> -->
   <!-- One "tab" for each step in the form: -->
   
-   <div class="tab">
-  		<h2>Child</h2>
-        
-        First Name:
-    	  <p><input placeholder="First name..." oninput="this.className = ''" name="c_fname"></p>
-    	  Last Name:
-    	  <p><input placeholder="Last name..." oninput="this.className = ''" name="c_lname"></p>
-    	  Age:
-    	  <p><select id="age" name="age" placeholder="Select">
+   <!-- <div class="tab">
+  		<h2>CHILD</h2>
+          <div class="box"> 
+            <div>
+                <label>FIRST NAME</label><br>
+                <p><input type="text" placeholder="First name..." oninput="this.className = ''" name="c_fname"></p> 
+            </div>
+            
+            <div>
+                <label>LAST NAME</label><br>
+                <p><input type="text" placeholder="Last name..." oninput="this.className = ''" name="c_lname"></p>  
+            </div>
+          </div>
+
+          <label>AGE</label><br>
+    	  <p><select style="margin-left: 8px" id="age" name="age" placeholder="Select">
                 <option value="" disabled selected hidden>Select</option>
                 <option value="7">7</option>
                 <option value="8">8</option>
@@ -135,68 +251,81 @@ fieldset {
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
-        </select></p>
+             </select></p>
         
-        School:
-		  <p><input placeholder="School..." oninput="this.className = ''" name="school"></p>
+        <label>SCHOOL</label><br>
+		  <p><input type="text" placeholder="School..." oninput="this.className = ''" name="school"></p>
         
-    	<h2>Parent</h2>
-        
-        First Name:
-    	  <p><input placeholder="First name..." oninput="this.className = ''" name="p_fname"></p>
-    	  Last Name:
-    	  <p><input placeholder="Last name..." oninput="this.className = ''" name="p_lname"></p>
-    	  Email:
-    	  <p><input placeholder="E-mail..." oninput="this.className = ''" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email"></p>
-    	  Phone:
-    	  <p><input placeholder="Phone..." oninput="this.className = ''" name="phone" maxlength="12"></p>
+    	<h2>PARENT</h2>
+        <div class="box">
+          <div>
+            <label>FIRST NAME</label><br>
+    	      <p><input type="text" placeholder="First name..." oninput="this.className = ''" name="p_fname"></p>
+    	  </div>
+
+          <div>
+            <label>LAST NAME</label><br>
+              <p><input type="text" placeholder="Last name..." oninput="this.className = ''" name="p_lname"></p>
+          </div>
+        </div>
+
+        <label>EMAIL</label><br>
+    	  <p><input type="text" placeholder="E-mail..." oninput="this.className = ''" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email"></p>
+    	
+        <label>PHONE</label><br>
+    	  <p><input type="text" placeholder="Phone..." oninput="this.className = ''" name="phone" maxlength="12"></p><br>
     
-        <label for ="heard_from">HOW DID YOU HEAR ABOUT US?</label><br>
-        	<select id ="heard_from" name ="heard_from" placeholder="Select">
-            	<option value="" disabled selected hidden>Select</option>
-            	<option value="word of mouth">Word of Mouth</option>
-            	<option value="advertisement">Advertisement</option>
-            	<option value="Social Media">Social Media</option>
-            	<option value="expo">Expo</option>
-            	<option value="other">Other</option>
-        	</select>
-  </div>
+        <label>HOW DID YOU HEAR ABOUT US?</label><br>
+        <select style="margin-left: 7px; margin-top: 15px " id ="heard_from" name ="heard_from" placeholder="Select">
+            <option value="" disabled selected hidden>Select</option>
+            <option value="word of mouth">Word of Mouth</option>
+            <option value="advertisement">Advertisement</option>
+            <option value="Social Media">Social Media</option>
+            <option value="expo">Expo</option>
+            <option value="other">Other</option>
+        </select>
+  </div> -->
   
   <div class="tab">
 	<h2>SELECT DATES</h2>
-  		<input type="radio" id="term01" name="term" value="1">TERM 01</br>
-  		<input type="radio" id="term02" name="term" value="2">TERM 02</br>
-  		<input type="radio" id="term03" name="term" value="3">TERM 03</br>
-  		<input type="radio" id="term04" name="term" value="4">TERM 04</br>
+  		<input style="font-family: Lato;" type="radio" id="term01" name="term" value="1"><p style="font-weight:bold;">TERM 01</p>
+  		<input style="font-family: Lato;" type="radio" id="term02" name="term" value="2"><p style="font-weight:bold;">TERM 02</p>
+  		<input style="font-family: Lato;" type="radio" id="term03" name="term" value="3"><p style="font-weight:bold;">TERM 03</p>
+  		<input style="font-family: Lato;" type="radio" id="term04" name="term" value="4"><p style="font-weight:bold;">TERM 04</p>
         
-  	<h2>TOTAL</h2>  <h2>$390</h2>
+  	<h2>TOTAL</h2> 
+      
+    <h3>$390.00</h3>
   
-  </div>
-  
-  <div class="tab">
   	<h2>PAYMENT</h2>
   
-  	<h3>LUMP SUM: $390</h3>
+  	<h3>LUMP SUM: $390</h3><br>
   
-  	NAME ON CARD
-  	<p><input placeholder="CARD HOLDER..." oninput="this.className = ''" name="cardname"></p>
-  	CARD NUMBER
-    <p><input placeholder="CARD NUMBER..." oninput="this.className = ''" name="cardnum" maxlength="16"></p>
-    
+  	<label>NAME ON CARD</label><br>
+  	 <p><input style="height: 40px; width:98%" type="text" placeholder="CARD HOLDER..." oninput="this.className = ''" name="cardname" maxlength="16"></p>
+  	
+    <label>CARD NUMBER</label><br>
 	<fieldset>
-    	<div class="some-class">
-    	<input type="radio" id="credit" name="payserv" value="credit"/>
-            	<label for="credit">Credit</label>
-  			<input type="radio" id="paypal" name="payserv" value="paypal"/>
-            	<label for="paypal">Paypal</label>
-    	</div>
+        <div class="box">
+            <div>
+                <p><input style="border: none; background-color: red; height: 40px; width:50%" type="text" placeholder="CARD NUMBER..." oninput="this.className = ''" name="cardnum" maxlength="16"></p>   
+            </div>
+            
+            <div>
+                <input type="radio" id="credit" name="payserv" value="credit"/>
+                    <label for="credit">Credit</label>
+                <input type="radio" id="paypal" name="payserv" value="paypal"/>
+                    <label for="paypal">Paypal</label>
+            </div>
+        </div>
     </fieldset><br>
     
-    <fieldset>
-    	EXPIRY DATE
-        <select id ="exp-month" name ="exp-mont">
-   		    <option value="" disabled selected hidden>Month</option>
-        	<option value="01">01</option>
+    <div class="box">
+    <div>
+    	<label>EXPIRY DATE</label><br>
+        <select style="margin-left: 8px; margin-top: 16px;" id ="exp-month" name ="exp-mont">
+   		  <option value="" disabled selected hidden>Month</option>
+          <option value="01">01</option>
           <option value="02">02</option>
           <option value="03">03</option>
           <option value="04">04</option>
@@ -208,21 +337,25 @@ fieldset {
           <option value="10">10</option>
           <option value="11">11</option>
           <option value="12">12</option>
-          </select>
+        </select>
+
        <select id ="exp-year" name ="exp-year" >
           <option value="" disabled selected hidden>Year</option>
-        	<option value="2022">2022</option>
+          <option value="2022">2022</option>
           <option value="2023">2023</option>
           <option value="2024">2024</option>
           <option value="2025">2025</option>
           <option value="2026">2026</option>
-      </select>
-   </fieldset><br>
+      </select><br>
+    </div>
 
-    <label for="cvc">CVC</label><br>
-    <p><input placeholder="CVC" oninput="this.className = ''" name="cvc" maxlength="3" ></p>
-      
-  </div>
+    <div>
+        <label for="cvc">CVC</label><br>
+        <p><input type="text" placeholder="CVC" oninput="this.className = ''" name="cvc" maxlength="3" ></p>  
+    </div>
+ </div>
+
+</div>
   
   <div class="tab">
   	<h2>YOUR CONFIRMATION HAS BEEN SENT TO YOUR EMAIL<h2>
@@ -230,11 +363,53 @@ fieldset {
   
   <div style="overflow:auto;">
     <div style="float:right;">
-      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">GO BACK</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">CONTINUE</button>
     </div>
   </div>
 </form>
+
+<div class="footer">
+    <div class="box-foot">
+      <div>
+        <a style="font:Lato;font-size:8px;color:#FFFFFF">ABOUT</a>
+          <ul>
+            <li style="text-indent: 1.3em;" class="footer">Background</li>
+            <li style="text-indent: -0.2em;" class="footer">Teachers</li>
+            <li style="text-indent: 5em;" class="footer">Sponsors and Partners</li><br><br>
+            <li style="font-size: 7px; text-indent: 5em;" class="footer">© 2021 LevelUp Works</li>
+          </ul>
+      </div>
+      
+      <div>
+          <a style="font:Lato;font-size:8px;color:#FFFFFF">PROGRAMME</a>
+        <ul>
+            <li style="text-indent: -3.2em;" class="footer">Content</li>
+            <li style="text-indent: -2.8em;" class="footer">Location</li>
+            <li style="text-indent: 1.5em;" class="footer">Dates and Schedule</li>
+            <li style="text-indent: -4.5em;" class="footer">Fees</li>
+          </ul>
+      </div>
+  
+      <div>
+          <a style="font:Lato;font-size:8px;color:#FFFFFF">STUDENT PROJECTS</a>
+        <ul>
+            <li style="text-indent: -3.3em;" class="footer">Student Games</li>
+            <li style="text-indent: -3.6em;" class="footer">Photo of Class</li>
+            <li style="text-indent: -6em;" class="footer">Reviews</li>
+          </ul>
+      </div>
+      
+      <div>
+          <a style="font:Lato;font-size:8px;color:#FFFFFF">CONTACT US</a>
+            <ul>
+              <li style="text-indent: 5.6em; list-style: inside url({% static 'img/mailicon.jpg' %});" class="footer">alan@levelupworks.com</li>
+              <li style="text-indent: 0.6em; list-style: inside url({% static 'img/phoneicon.png' %});" class="footer">021 668 185</li>
+              <li style="text-indent: 2.2em; list-style: inside url({% static 'img/fbicon.png' %});" class="footer">LevelUp Works</li>
+           </ul>
+      </div>
+    </div>
+  </div>
 
 <script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
