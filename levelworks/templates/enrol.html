@@ -29,8 +29,14 @@ h2 {
     color:black;  
     background-color:#B2ADAD;  
     padding:5px; 
-    font-family: Lato;
+    font: Lato;
   }
+
+h3 {  
+    color:black;  
+    padding:5px; 
+    font: Lato;
+}
 
 label {
     font:Lato; 
@@ -56,6 +62,8 @@ input[type=text] {
 input.invalid {
   background-color: #ffdddd;
 }
+
+
 
 /* Hide all steps by default: */
 .tab {
@@ -201,7 +209,26 @@ fieldset {
     grid-template-columns: 0.3fr 0.2fr 0.2fr 0.3fr;
     grid-gap: 15px 2em;
   }
+
+  .floatBlock {
+    padding: none;
+    margin: none;
+  }
+
+  .paymentOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    break-before: always;
+    margin: 6px 0 3px 0;
+    padding-right: none;
+    padding-left: none; 
+  }
   
+  #purchaseOrder {
+    margin: 0 0 2em 0;
+  }
+
 </style>
 <body>
 
@@ -228,7 +255,7 @@ fieldset {
   <!--<h1>Register:</h1> -->
   <!-- One "tab" for each step in the form: -->
   
-   <!-- <div class="tab">
+   <div class="tab">
   		<h2>CHILD</h2>
           <div class="box"> 
             <div>
@@ -284,7 +311,7 @@ fieldset {
             <option value="expo">Expo</option>
             <option value="other">Other</option>
         </select>
-  </div> -->
+  </div>
   
   <div class="tab">
 	<h2>SELECT DATES</h2>
@@ -296,69 +323,85 @@ fieldset {
   	<h2>TOTAL</h2> 
       
     <h3>$390.00</h3>
-  
+
   	<h2>PAYMENT</h2>
-  
-  	<h3>LUMP SUM: $390</h3><br>
-  
+
+    <div style="padding: 0 0 18px 8px;">
+
+      <div style="font-weight:bold; font-size:20px;">
+        <span style="vertical-align:middle;">LUMP SUM</span>
+        <span style="vertical-align:middle; float:right;">$390.00</span>
+      </div>
+
+      <div style="font-size:  12px">
+        <p>Save 10%</p>
+      </div>
+
+    </div>
+    
   	<label>NAME ON CARD</label><br>
   	 <p><input style="height: 40px; width:98%" type="text" placeholder="CARD HOLDER..." oninput="this.className = ''" name="cardname" maxlength="16"></p>
   	
-    <label>CARD NUMBER</label><br>
-	<fieldset>
-        <div class="box">
-            <div>
-                <p><input style="border: none; background-color: red; height: 40px; width:50%" type="text" placeholder="CARD NUMBER..." oninput="this.className = ''" name="cardnum" maxlength="16"></p>   
-            </div>
-            
-            <div>
-                <input type="radio" id="credit" name="payserv" value="credit"/>
-                    <label for="credit">Credit</label>
-                <input type="radio" id="paypal" name="payserv" value="paypal"/>
-                    <label for="paypal">Paypal</label>
-            </div>
-        </div>
-    </fieldset><br>
+    <label>CARD NUMBER</label><br>     
+      <div id="paymentContainer" name="paymentContainer" class="paymentOptions">
+          <div id="paynum" class="floatBlock">
+              <p><input style="width:870px; height: 38px;" type="text" placeholder="CARD NUMBER..." oninput="this.className = ''" name="cardnum" maxlength="16"></p>   
+          </div>
+      </div>
+
+      <div style="position: relative; left:710px; bottom:40px;" id="payCC" >
+        <label for="credit"><input type="radio" id="credit" name="payserv" value="credit"/><img style="position: relative; left:8px;" src="{% static 'img/credcardicon.png' %}"></label>
+      </div>
+
+      <div style="position: relative; left:720px; bottom:40px;" id="payPP" >
+        <label for="paypal"><input type="radio" id="paypal" name="payserv" value="paypal"/><img style="position: relative; left:8px;" src="{% static 'img/paypalicon.png' %}" width="55" height="14"></label>
+      </div>
+    <br>
     
     <div class="box">
-    <div>
-    	<label>EXPIRY DATE</label><br>
-        <select style="margin-left: 8px; margin-top: 16px;" id ="exp-month" name ="exp-mont">
-   		  <option value="" disabled selected hidden>Month</option>
-          <option value="01">01</option>
-          <option value="02">02</option>
-          <option value="03">03</option>
-          <option value="04">04</option>
-          <option value="05">05</option>
-          <option value="06">06</option>
-          <option value="07">07</option>
-          <option value="08">08</option>
-          <option value="09">09</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-        </select>
+      <div style="position: relative; right: 55px; bottom: 5px;">  
 
-       <select id ="exp-year" name ="exp-year" >
-          <option value="" disabled selected hidden>Year</option>
-          <option value="2022">2022</option>
-          <option value="2023">2023</option>
-          <option value="2024">2024</option>
-          <option value="2025">2025</option>
-          <option value="2026">2026</option>
-      </select><br>
-    </div>
+        <label>EXPIRY DATE</label><br><br>
+          <div style="position: relative; left: 8px">
+            <select id ="exp-month" name ="exp-mont">
+            <option value="" disabled selected hidden>Month</option>
+              <option value="01">01</option>
+              <option value="02">02</option>
+              <option value="03">03</option>
+              <option value="04">04</option>
+              <option value="05">05</option>
+              <option value="06">06</option>
+              <option value="07">07</option>
+              <option value="08">08</option>
+              <option value="09">09</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
 
-    <div>
-        <label for="cvc">CVC</label><br>
-        <p><input type="text" placeholder="CVC" oninput="this.className = ''" name="cvc" maxlength="3" ></p>  
-    </div>
+          <select id ="exp-year" name ="exp-year" >
+              <option value="" disabled selected hidden>Year</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+          </select><br>
+        </div>
+      </div>
+
+      <div style="position: relative; right: 180px; bottom: 5px;">
+          <label for="cvc">CVC</label><br>
+          <p><input type="text" placeholder="CVC" oninput="this.className = ''" name="cvc" maxlength="3" ></p>  
+      </div>
+    
  </div>
 
-</div>
-  
+</div> 
+
   <div class="tab">
-  	<h2>YOUR CONFIRMATION HAS BEEN SENT TO YOUR EMAIL<h2>
+  	<!-- <h2>YOUR CONFIRMATION HAS BEEN SENT TO YOUR EMAIL<h2> -->
+    <img src= "{% static 'img/confirmation.png' %}" width="890" height="506">
   </div>
   
   <div style="overflow:auto;">
