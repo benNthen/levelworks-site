@@ -4,5 +4,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 RUN mkdir /code
 WORKDIR /code
 COPY . /code
+ENV POSTGRES_USER docker
+ENV POSTGRES_PASSWORD docker
+ENV POSTGRES_DB docker
 RUN pip install -r requirements.txt
-

@@ -2,11 +2,8 @@ version: "3.9"
 
 services:
   db:
-    build:
-      #image: postgres
-      #container_name: postgresdb
-      context: ./Docker
-      dockerfile: db.Dockerfile
+    image: postgres
+    container_name: postgresdb
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
@@ -16,10 +13,8 @@ services:
       - APP_DB_PASS=docker
       - APP_DB_NAME=docker
     volumes:
-      - pgdb-data:/var/lib/postgresql/data
-      #- pgdb:/docker-entrypoint-initdb.d/
-    ports:
-      - "5432:5432"
+      #- pgdb-data:/var/lib/postgresql/data
+      - pgdb:/docker-entrypoint-initdb.d/
 
   levelupworks:
     restart: always
@@ -33,10 +28,10 @@ services:
     image: levelupworks-image
     container_name: levelupworks-app
     ports:
-      - "8000:8000"
+    - "8000:8000"
     depends_on:
-      - db
+    - db
 
 volumes:
-  pgdb-data:
+  pgdb:
     driver: local
