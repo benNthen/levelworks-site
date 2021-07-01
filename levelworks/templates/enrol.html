@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 <style>
 * {
   box-sizing: border-box;
@@ -15,7 +15,7 @@ body {
 #regForm {
   background-color: #ffffff;
   margin: 100px auto;
-  font-family: Raleway;
+  font-family: Lato;
   padding: 40px;
   width: 70%;
   min-width: 300px;
@@ -230,12 +230,12 @@ fieldset {
 </style>
 <body>
 
-<div class="topnav">
+  <div class="topnav">
     <a style="font:Mulish; font-size:8px;"href="#">ABOUT</a>
     <a style="font:Mulish; font-size:8px;"href="#">PROGRAMME</a>
     <a style="font:Mulish; font-size:8px;"href="#">STUDENT PROJECTS</a>
-    <a href="accounts/index" style="font:Mulish; font-size:15px; margin-left: 140px; margin-right: 140px; font-weight:bold" href="#">LOGO</a> 
-    <a><button class="button button-enrol">ENROL</button></a>
+    <a href="accounts/index" style="font:Mulish; font-size:15px; margin-left: 140px; margin-right: 70px; font-weight:bold" href="#">LOGO</a> 
+    <a href="accounts/enrol"><button class="button button-enrol">ENROL</button></a>
     <a style="margin-left: 6px"><button class="button button-portal">PORTAL</button></a>
     <a style="margin-top: 3px; margin-left: 16px"><img src="{% static 'img/langicon.png' %}" width="18" height="19"></a>
   </div>
@@ -253,7 +253,7 @@ fieldset {
   <!--<h1>Register:</h1> -->
   <!-- One "tab" for each step in the form: -->
   
-   <div class="tab">
+  <div class="tab">
   		<h2>CHILD</h2>
           <div class="box"> 
             <div>
@@ -309,7 +309,7 @@ fieldset {
             <option value="expo">Expo</option>
             <option value="other">Other</option>
         </select>
-  </div>
+  </div> 
   
   <div class="tab">
 	<h2>SELECT DATES</h2>
@@ -357,7 +357,7 @@ fieldset {
     <br>
     
     <div class="box">
-      <div style="position: relative; right: 55px; bottom: 5px;">  
+      <div style="position: relative; bottom: 5.4px;">  
 
         <label>EXPIRY DATE</label><br><br>
           <div style="position: relative; left: 8px">
@@ -388,7 +388,7 @@ fieldset {
         </div>
       </div>
 
-      <div style="position: relative; right: 180px; bottom: 5px;">
+      <div style="position: relative; right: 100px; bottom: 5px;">
           <label for="cvc">CVC</label><br>
           <p><input type="text" placeholder="CVC" oninput="this.className = ''" name="cvc" maxlength="3" ></p>  
       </div>
@@ -467,9 +467,9 @@ function showTab(n) {
     document.getElementById("prevBtn").style.display = "inline";
   }
   if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
+    document.getElementById("nextBtn").innerHTML = "CONFIRM PAYMENT";
   } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
+    document.getElementById("nextBtn").innerHTML = "CONTINUE";
   }
   //... and run a function that will display the correct step indicator:
   fixStepIndicator(n)
