@@ -35,7 +35,7 @@ def enrol(request):
         # For Testing purpose only, change () argument
         # print(age)
 
-        # PROBLEM HERE
+
         # COMMANDS to send these data inputs into database
         student = Student()
 
@@ -49,7 +49,7 @@ def enrol(request):
         student.phone = request.POST.get('phone')
 
         student.age = request.POST.get('age') 
-        student.term = request.POST.get('term')
+        student.term = request.POST.get('term', False)
         student.heard_from = request.POST.get('heard_from')
 
         student.save()
