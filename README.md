@@ -2,8 +2,7 @@
 Level Up Works is a coding school programme for kids aged 7-12 years old. This is a prototype website with an Enrol feature that allows the user to input the child and parent's details. The details are all stored in the PostgreSQL database container.
 
 ![image](https://user-images.githubusercontent.com/53241776/125166228-b5977480-e1ee-11eb-80a3-017b99b9eb92.png)
-![image](https://user-images.githubusercontent.com/53241776/125166891-e331ed00-e1f1-11eb-9cd4-14c662510ec7.png)
-![image](https://user-images.githubusercontent.com/53241776/125166896-e6c57400-e1f1-11eb-9f1f-4002af33719c.png)
+Figure 1: View of the Homepage.
 
 The overall design of this website was adapted from [Wireframe V1 which can be found on Figma here](https://www.figma.com/file/AkCQSjLAE18VIGIWofagFY/LEVELUP-WORKS---Team-Version-File?node-id=0%3A1). 
 
@@ -74,7 +73,8 @@ psql
 SELECT * FROM levelweb_student;
 ```
 ![image](https://user-images.githubusercontent.com/53241776/125165969-79174900-e1ed-11eb-81bd-cefa278cd5f2.png)
-Figure N: shows an example of the output database in the terminal.
+
+Figure 2: shows an example of the output database in the terminal.
 
 # Contributors
 
