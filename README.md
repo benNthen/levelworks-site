@@ -78,7 +78,7 @@ SELECT * FROM levelweb_student;
 ![image](https://user-images.githubusercontent.com/53241776/125165969-79174900-e1ed-11eb-81bd-cefa278cd5f2.png)
 Figure N: shows an example of the output database in the terminal.
 
-#### Contributors
+# Contributors
 
 | <a href="https://github.com/benNthen" target="_blank">**Benedict Velasco**</a> | <a href="https://github.com/blimeyitscode" target="_blank">**Gaurang Ambani**</a>
 | :---: |:---:|
