@@ -30,19 +30,14 @@ cd levelworks-site
 Before you start, install the dependencies and then set the virtual environment using the following commands.
 
 ```
-# navigates inside levelworks folder
 cd levelworks
 
-# install the dependancies
 pip install -r requirements.txt
 
-# return to root folder
 cd - 
 
-# Activates the virtual environment
 source virtual/Scripts/activate
 
-# Navigate back to levelworks folder container manage.py file
 cd levelworks
 ```
 ## Running the website locally using a container
