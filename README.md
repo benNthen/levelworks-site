@@ -1,4 +1,4 @@
-# Level Up Works Website
+# Level-Up Works Website
 Level Up Works is a coding school programme for kids aged 7-12 years old. This is a prototype website with an Enrol feature that allows the user to input the child and parent's details. The details are all stored in the PostgreSQL database container.
 
 ![image](https://user-images.githubusercontent.com/53241776/125166228-b5977480-e1ee-11eb-80a3-017b99b9eb92.png)
@@ -6,12 +6,10 @@ Figure 1: View of the Homepage.
 
 The overall design of this website was adapted from [Wireframe V1 which can be found on Figma here](https://www.figma.com/file/AkCQSjLAE18VIGIWofagFY/LEVELUP-WORKS---Team-Version-File?node-id=0%3A1). 
 
-# Using this repository
-
+## Using this repository
 You can run the website locally using Visual Studio Code with a Docker container. 
 
 ## Prerequisites
-
 To use this repository, you need the following installed locally:
 
 - [Visual Studio Code](https://code.visualstudio.com/)
@@ -39,16 +37,17 @@ source virtual/Scripts/activate
 
 cd levelworks
 ```
-## Running the website locally using a container
+# Running the website locally
+The website runs on Docker. 
 
-To build the site in a container, run the following to build the container images:
+Run the following commands to build the container images:
 
 ```
 docker-compose build
 docker-compose up -d
 ```
 
-Open up your browser to http://localhost:5432 to view the website. As you make changes to the source files, docker updates the website and forces a browser refresh simultaneously.
+Open up your browser to http://localhost:5432 to view the website. As you make changes to the source files, docker updates the website simultaneously.
 
 ## Retrieving the enrolment details stored in the PostgreSQL database
 
