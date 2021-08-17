@@ -1,18 +1,15 @@
-# Level Up Works Website
+# Level-Up Works Website
 Level Up Works is a coding school programme for kids aged 7-12 years old. This is a prototype website with an Enrol feature that allows the user to input the child and parent's details. The details are all stored in the PostgreSQL database container.
 
 ![image](https://user-images.githubusercontent.com/53241776/125166228-b5977480-e1ee-11eb-80a3-017b99b9eb92.png)
-![image](https://user-images.githubusercontent.com/53241776/125166891-e331ed00-e1f1-11eb-9cd4-14c662510ec7.png)
-![image](https://user-images.githubusercontent.com/53241776/125166896-e6c57400-e1f1-11eb-9f1f-4002af33719c.png)
+Figure 1: View of the Homepage.
 
 The overall design of this website was adapted from [Wireframe V1 which can be found on Figma here](https://www.figma.com/file/AkCQSjLAE18VIGIWofagFY/LEVELUP-WORKS---Team-Version-File?node-id=0%3A1). 
 
-# Using this repository
-
+## Using this repository
 You can run the website locally using Visual Studio Code with a Docker container. 
 
 ## Prerequisites
-
 To use this repository, you need the following installed locally:
 
 - [Visual Studio Code](https://code.visualstudio.com/)
@@ -27,34 +24,28 @@ git clone https://github.com/benNthen/levelworks-site.git
 cd levelworks-site
 ```
 
-Before you start, install the dependencies and then set the virtual environment using the following commands.
+Before you start, install the dependencies and then set the virtual environment(while on the root-folder levelworks):
 
 ```
-# navigates inside levelworks folder
 cd levelworks
 
-# install the dependancies
 pip install -r requirements.txt
 
-# return to root folder
 cd - 
 
-# Activates the virtual environment
 source virtual/Scripts/activate
 
-# Navigate back to levelworks folder container manage.py file
 cd levelworks
 ```
-## Running the website locally using a container
-
-To build the site in a container, run the following to build the container images:
+# Running the website locally
+Activate Docker Desktop and then run the following commands to build the container images:
 
 ```
 docker-compose build
 docker-compose up -d
 ```
 
-Open up your browser to http://localhost:5432 to view the website. As you make changes to the source files, docker updates the website and forces a browser refresh simultaneously.
+Now ppen up your browser to http://localhost:5432 to view the website. As you make changes to the source files, docker updates the website simultaneously.
 
 ## Retrieving the enrolment details stored in the PostgreSQL database
 
@@ -79,7 +70,8 @@ psql
 SELECT * FROM levelweb_student;
 ```
 ![image](https://user-images.githubusercontent.com/53241776/125165969-79174900-e1ed-11eb-81bd-cefa278cd5f2.png)
-Figure N: shows an example of the output database in the terminal.
+
+Figure 2: shows an example of the output database in the terminal.
 
 # Contributors
 
