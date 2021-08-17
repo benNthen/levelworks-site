@@ -24,7 +24,7 @@ git clone https://github.com/benNthen/levelworks-site.git
 cd levelworks-site
 ```
 
-Before you start, install the dependencies and then set the virtual environment using the following commands.
+Before you start, install the dependencies and then set the virtual environment(while on the root-folder levelworks):
 
 ```
 cd levelworks
@@ -38,16 +38,14 @@ source virtual/Scripts/activate
 cd levelworks
 ```
 # Running the website locally
-The website runs on Docker. 
-
-Run the following commands to build the container images:
+Activate Docker Desktop and then run the following commands to build the container images:
 
 ```
 docker-compose build
 docker-compose up -d
 ```
 
-Open up your browser to http://localhost:5432 to view the website. As you make changes to the source files, docker updates the website simultaneously.
+Now ppen up your browser to http://localhost:5432 to view the website. As you make changes to the source files, docker updates the website simultaneously.
 
 ## Retrieving the enrolment details stored in the PostgreSQL database
 
