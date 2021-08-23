@@ -37,7 +37,7 @@ source virtual/Scripts/activate
 
 cd levelworks
 ```
-# Running the website locally
+## Running the website on your local computer
 Activate Docker Desktop and then run the following commands to build the container images:
 
 ```
@@ -45,7 +45,7 @@ docker-compose build
 docker-compose up -d
 ```
 
-Now ppen up your browser to http://localhost:5432 to view the website. As you make changes to the source files, docker updates the website simultaneously.
+Now open up your browser to http://localhost:5432 to view the website. As you make changes to the source files, docker updates the website simultaneously.
 
 ## Retrieving the enrolment details stored in the PostgreSQL database
 
