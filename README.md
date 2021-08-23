@@ -7,7 +7,7 @@ Figure 1: View of the Homepage.
 The overall design of this website was adapted from [Wireframe V1 which can be found on Figma here](https://www.figma.com/file/AkCQSjLAE18VIGIWofagFY/LEVELUP-WORKS---Team-Version-File?node-id=0%3A1). 
 
 ## Using this repository
-You can run the website locally using Visual Studio Code with a Docker container. 
+You can run the website on your local computer using Visual Studio Code with a Docker container installed. 
 
 ## Prerequisites
 To use this repository, you need the following installed locally:
