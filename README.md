@@ -2,7 +2,20 @@
 Level Up Works is a coding school programme for kids aged 7-12 years old. This is a prototype website with an Enrol feature that allows the user to input the child and parent's details. The details are all stored in the PostgreSQL database container.
 
 ![image](https://user-images.githubusercontent.com/53241776/125166228-b5977480-e1ee-11eb-80a3-017b99b9eb92.png)
+
 Figure 1: View of the Homepage.
+
+![image](https://user-images.githubusercontent.com/53241776/134843749-282fb0ba-a4e0-423e-a96c-3b1ff3dd79aa.png)
+
+Figure 2: First page of the Enrolment form.
+
+![image](https://user-images.githubusercontent.com/53241776/134843824-299b02f6-fb90-49a7-b94a-da3eba46942b.png)
+
+Figure 3: Second page of the Enrolment form.
+
+![image](https://user-images.githubusercontent.com/53241776/134844008-19bbdb7a-8ded-4058-859c-e6eff0a000e5.png)
+
+Figure 4: Last page of the Enrolment form.
 
 The overall design of this website was adapted from [Wireframe V1 which can be found on Figma here](https://www.figma.com/file/AkCQSjLAE18VIGIWofagFY/LEVELUP-WORKS---Team-Version-File?node-id=0%3A1). 
 
